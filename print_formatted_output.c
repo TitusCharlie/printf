@@ -23,6 +23,7 @@ int replace_char(va_list ap_list, char id)
 	for (i = 0; fmt_op[i].c != '\0'; i++)
 		if (fmt_op[i].c == id)
 			return (fmt_op[i].write_func(ap_list));
+	write(1, "%%", 1);
 	return (write(1, &id, 1));
 }
 
