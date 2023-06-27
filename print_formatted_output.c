@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * replace_char - replace a placeholder char and print to stdout
  * @ap_list: pointer to the list of variable argument
@@ -41,38 +40,6 @@ int print_char(va_list ap_list)
 	return (write(1, &c, 1));
 }
 
-/**
- * print_percent - print percentage sign to the stdout
- * @ap_list: pointer to the list of argument
- * Return: number of characters written
- */
-int print_percent(va_list ap_list)
-{
-	UNUSED(ap_list);
-	return (write(1, "%%", 1));
-}
-
-/**
- * print_newline - print percentage sign to the stdout
- * @ap_list: pointer to the list of argument
- * Return: number of characters written
- */
-int print_newline(va_list ap_list)
-{
-	UNUSED(ap_list);
-	return (write(1, "\n", 1));
-}
-
-/**
- * print_space - print percentage sign to the stdout
- * @ap_list: pointer to the list of argument
- * Return: number of characters written
- */
-int print_space(va_list ap_list)
-{
-	UNUSED(ap_list);
-	return (0);
-}
 /**
  * print_string - print string to stdout
  * @ap_list: pointer to the list of argument
