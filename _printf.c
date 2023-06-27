@@ -11,27 +11,27 @@ int _printf(const char *format, ...)
 {
 	/* pointer to the var argument list */
 	va_list ap_list;
-	int c_printed = 0, index = 0;
+	int c_printed = 0, i = 0, temp = 0;
 
 	if (format == NULL)
 		return (-1);
 	/* initialize the pointer */
 	va_start(ap_list, format);
-	while (format[index] != '\0')
+	while (format[i] != '\0')
 	{
-		/* check for placeholder replacement */
-		if (format[index] == '%')
+		if (format[i] == '%')
 		{
-			if (format[index + 1] == '\0')
-				return (-1);
-			index++;
-			c_printed += replace_char(ap_list, format[index]);
+			i++;
+			temp = replace_char(ap_list, format[i]);
+			if (temp == -1)
+				return(-1);
+			c_printed += temp;
 		}
 		else
 		{
-			c_printed += print_output(format[index]);
+			c_printed += print_output(format[i]);
 		}
-		index++;
+		i++;
 	}
 	return (c_printed);
 }

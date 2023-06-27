@@ -12,19 +12,23 @@ int replace_char(va_list ap_list, char id)
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_percent},
-		{' ', print_space},
-		{'\n', print_newline},
 		{'d', print_int},
 		{'i', print_int},
 		{'\0', NULL}
 	};
-	int i;
+	int i, len = 0;
 
 	for (i = 0; fmt_op[i].c != '\0'; i++)
 		if (fmt_op[i].c == id)
 			return (fmt_op[i].write_func(ap_list));
-	write(1, "%%", 1);
-	write(1, &id, 1);
+	if (fmt_op[i].c == '\0')
+	{
+		if (id == '\0')
+			return (-1);
+		len += write(1, "%%", 1);
+		len += write(1, &id, 1);
+		return (len);
+	}
 	return (-1);
 }
 
