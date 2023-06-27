@@ -25,6 +25,7 @@ typedef struct printf_op printf_op_t;
 int print_char(va_list);
 int print_int(va_list);
 int print_newline(va_list);
+int print_space(va_list);
 int print_string(va_list);
 int print_float(va_list);
 int print_percent(va_list);

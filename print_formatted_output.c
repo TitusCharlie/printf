@@ -13,6 +13,8 @@ int replace_char(va_list ap_list, char id)
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_percent},
+		{' ', print_space},
+		{'\n', print_newline},
 		{'d', print_int},
 		{'i', print_int},
 		{'\0', NULL}
@@ -22,7 +24,7 @@ int replace_char(va_list ap_list, char id)
 	for (i = 0; fmt_op[i].c != '\0'; i++)
 		if (fmt_op[i].c == id)
 			return (fmt_op[i].write_func(ap_list));
-	return (-1);
+	return (write(1, &id, 1));
 }
 
 
@@ -50,7 +52,27 @@ int print_percent(va_list ap_list)
 	return (write(1, "%%", 1));
 }
 
+/**
+ * print_newline - print percentage sign to the stdout
+ * @ap_list: pointer to the list of argument
+ * Return: number of characters written
+ */
+int print_newline(va_list ap_list)
+{
+	UNUSED(ap_list);
+	return (write(1, "\n", 1));
+}
 
+/**
+ * print_space - print percentage sign to the stdout
+ * @ap_list: pointer to the list of argument
+ * Return: number of characters written
+ */
+int print_space(va_list ap_list)
+{
+	UNUSED(ap_list);
+	return (0);
+}
 /**
  * print_string - print string to stdout
  * @ap_list: pointer to the list of argument
