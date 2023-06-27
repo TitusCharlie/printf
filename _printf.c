@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 			i++;
 			temp = replace_char(ap_list, format[i]);
 			if (temp == -1)
-				return(-1);
+				return (-1);
 			c_printed += temp;
 		}
 		else
