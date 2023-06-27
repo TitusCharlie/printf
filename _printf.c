@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 		if (format[index] == '%')
 		{
 			if (format[index + 1] == '\0')
-				return (0);
+				return (-1);
 			index++;
 			c_printed += replace_char(ap_list, format[index]);
 		}
